@@ -1,23 +1,17 @@
 import { ViewType } from "@/hooks/useViewType";
-import { Link } from "@/types/index";
-
-import { CiLink as LinkIcon } from "react-icons/ci";
-
-import { CiTrash as TrashXIcon } from "react-icons/ci";
-
-import { BsThreeDots as DotsIcon } from "react-icons/bs";
-
-import { MdScreenSearchDesktop as AppWindowIcon } from "react-icons/md";
+import { LinkItem } from "@/types/index";
 
 import Dropdown from "@/components/Dropdown";
 import Modal from "@/components/Modal";
 import { useState } from "react";
+import { IconAppWindow, IconDots, IconLink, IconTrashX } from "@tabler/icons-react";
+import Image from "next/image";
 
 interface Props {
   type?: ViewType;
   showMenu?: boolean;
-  link: Link;
-  removeLink?: (link: Link) => void;
+  link: LinkItem;
+  removeLink?: (link: LinkItem) => void;
 }
 
 interface MenuItem {
@@ -26,10 +20,10 @@ interface MenuItem {
   icon?: JSX.Element;
 }
 
-function genEmbedCode(link: Link) {
+function genEmbedCode(link: LinkItem) {
   const id = link.title;
 
-  return `<iframe style="width:100%;height:100%;min-width:256px;" src="https://deno-news.deno.dev/l/${id}" frameBorder="0"></iframe>`;
+  return `<iframe style="width:100%;height:100%;min-width:256px;" src="https://bodhi-link.vercel.app/s/${id}" frameBorder="0"></iframe>`;
 }
 
 export default function LinkCard({
@@ -51,12 +45,12 @@ export default function LinkCard({
     {
       label: "embed",
       value: "embed",
-      icon: <AppWindowIcon size={20} color="skyblue"></AppWindowIcon>,
+      icon: <IconAppWindow size={20} color="skyblue" />,
     },
     {
       label: "remove",
       value: "remove",
-      icon: <TrashXIcon size={20} color="red"></TrashXIcon>,
+      icon: <IconTrashX size={20} color="red" />,
     },
   ]);
 
@@ -90,7 +84,7 @@ export default function LinkCard({
         <>
           <Dropdown
             className="absolute top-2 right-2 text-sm text-gray-500 transition-opacity opacity-0 group-hover:opacity-100 cursor-pointer"
-            icon={<DotsIcon />}
+            icon={<IconDots />}
             items={items}
             onSelect={(item: MenuItem) => {
               switch (item.value) {
@@ -129,14 +123,15 @@ export default function LinkCard({
         <>
           <img
             className="h-32 object-cover self-center z-100"
-            src={image}
+            src={image!}
+            width={"auto"}
             alt=""
           />
           <div className="flex flex-col">
             <h2 className="text-xl font-bold mt-4">{title}</h2>
             <div className="text-gray-600 my-2 flex-1">{description}</div>
             <span className="inline-flex items-center text-gray-300 font-xs ">
-              <LinkIcon size={16} />
+              <IconLink size={16} />
               <a href={url} target="_blank">
                 {url}
               </a>
@@ -148,13 +143,13 @@ export default function LinkCard({
       {type === "image-left" && (
         <>
           <div className="flex-none w-1/3">
-            <img className="object-cover" src={image} alt="" />
+            <img className="object-cover" src={image!} alt="" />
           </div>
           <div className="flex-grow ml-4">
             <h2 className="text-xl font-bold">{title}</h2>
             <div className="text-gray-600 my-2 flex-1">{description}</div>
             <span className="inline-flex items-center text-gray-300 font-xs">
-              <LinkIcon size={16} />
+              <IconLink size={16} />
               <a href={url} target="_blank">
                 {url}
               </a>

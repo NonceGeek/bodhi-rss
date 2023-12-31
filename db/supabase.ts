@@ -1,5 +1,5 @@
 
-import { Link } from "@/types/index";
+import { LinkItem } from "@/types/index";
 import { createClient } from "@supabase/supabase-js";
 
 const supabaseUrl = "https://ttsogebedhkttgyrgjtc.supabase.co";
@@ -8,7 +8,7 @@ const supabaseKey =
 
 export const db = createClient(supabaseUrl, supabaseKey);
 
-export async function genLink(id: number): Promise<Link | null> {
+export async function genLink(id: number): Promise<LinkItem | null> {
   const { data, error } = await db.from("bodhi_text_assets").select("*").eq(
     "id_on_chain",
     id,
@@ -23,12 +23,39 @@ export async function genLink(id: number): Promise<Link | null> {
     return null;
   }
 
-  const item: Link = {
+  const item: LinkItem = {
     title: data[0].id_on_chain,
     url: `https://bodhi.wtf/${data[0].id_on_chain}`,
     description: `${(data[0].content as string).substring(0, 100)}...`,
     image: "",
   };
+
+  return item;
+}
+
+export async function genCreatorLink(address: string): Promise<LinkItem[] | null> {
+  const { data, error } = await db.from("bodhi_text_assets").select("*").eq(
+    "creator",
+    address,
+  );
+
+  if (error) {
+    console.error(error);
+    return null;
+  }
+  if (data.length < 1) {
+    console.error("the data length is empty");
+    return null;
+  }
+
+  const item: LinkItem[] = data.map((item) => {
+    return {
+      title: item.id_on_chain,
+      url: `https://bodhi.wtf/${item.id_on_chain}`,
+      description: `${(item.content as string).substring(0, 100)}...`,
+      image: "",
+    };
+  })
 
   return item;
 }

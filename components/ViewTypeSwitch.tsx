@@ -1,7 +1,6 @@
-import { TbFloatLeft as IconFloatLeft } from "react-icons/tb";
-import { TbFloatCenter as IconFloatCenter } from "react-icons/tb";
-import { TbFloatRight as IconFloatRight } from "react-icons/tb";
+
 import { ViewType } from "@/hooks/useViewType";
+import { IconFloatCenter, IconFloatLeft } from "@tabler/icons-react";
 
 type Props = {
   viewType: ViewType;

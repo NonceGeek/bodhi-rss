@@ -1,4 +1,4 @@
-export interface Link {
+export interface LinkItem {
     title: string;
     description?: string | null | undefined;
     image?: string;
