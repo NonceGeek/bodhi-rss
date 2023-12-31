@@ -9,9 +9,7 @@ import { IconAsset, IconCheck, IconCopy } from "@tabler/icons-react";
 import delay from "delay";
 import Link from "next/link";
 
-const defaultHistory: LinkItem[] = [
-
-];
+const defaultHistory: LinkItem[] = [];
 
 const genEmbedCode = (address: string) => {
   return `<iframe style="width:100%;height:100%;min-width:256px;" src="https://bodhi-link.vercel.app/m/${address}" frameBorder="0"></iframe>`;
@@ -138,21 +136,21 @@ export default function LinkMaker() {
 
       <ViewTypeSwitch viewType={viewType} toggleViewType={toggleViewType} />
 
-      <Link href={`/m/${creator}`} target="_blank">
-        <div className="flex flex-row items-center justify-center my-4 text-center text-base text-gray-500">
+      <div className="flex flex-row items-center justify-center my-4 text-center text-base text-gray-500">
+        <Link href={`/m/${creator}`} target="_blank">
           {creator}
+        </Link>
 
-          {creator ? (
-            <button onClick={handleCopy}>
-              {isCopied ? (
-                <IconCheck className="w-6 h-6"></IconCheck>
-              ) : (
-                <IconCopy className="w-6 h-6"></IconCopy>
-              )}
-            </button>
-          ) : null}
-        </div>
-      </Link>
+        {creator ? (
+          <button onClick={handleCopy}>
+            {isCopied ? (
+              <IconCheck className="w-6 h-6"></IconCheck>
+            ) : (
+              <IconCopy className="w-6 h-6"></IconCopy>
+            )}
+          </button>
+        ) : null}
+      </div>
 
       <div className="mt-4 gap-4 grid grid-cols-1 sm:grid-cols-2">
         {history.map((item: LinkItem, index: number) => {
