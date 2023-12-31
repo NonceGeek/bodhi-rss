@@ -13,7 +13,7 @@ function Modal({
   onClose,
   closeText = "Close",
 }: ModalProps) {
-  function handleBackgroundClick(event: MouseEvent) {
+  function handleBackgroundClick(event: any) {
     const target = event.target as HTMLElement;
     if (target.classList.contains("modal-background")) {
       onClose();
