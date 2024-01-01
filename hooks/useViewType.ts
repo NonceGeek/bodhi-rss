@@ -1,22 +1,21 @@
-import { useState, useEffect, useCallback } from "react";
+import { useCallback, useEffect, useState } from 'react';
 
-
-export type ViewType = "image-up" | "image-left";
+export type ViewType = 'image-up' | 'image-left';
 
 export function useViewType() {
-    const [viewType, setViewType] = useState<ViewType>("image-up");
+  const [viewType, setViewType] = useState<ViewType>('image-up');
 
-    useEffect(() => {
-        setViewType((localStorage.getItem("viewType") as ViewType) || "image-up");
-    }, []);
+  useEffect(() => {
+    setViewType((localStorage.getItem('viewType') as ViewType) || 'image-up');
+  }, []);
 
-    const toggleViewType = useCallback((newViewType: ViewType) => {
-        setViewType(newViewType);
-        localStorage.setItem("viewType", newViewType);
-    }, []);
+  const toggleViewType = useCallback((newViewType: ViewType) => {
+    setViewType(newViewType);
+    localStorage.setItem('viewType', newViewType);
+  }, []);
 
-    return {
-        viewType,
-        toggleViewType,
-    };
+  return {
+    viewType,
+    toggleViewType,
+  };
 }

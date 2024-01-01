@@ -1,13 +1,13 @@
-import { Button } from "@/components/Button";
-import ViewTypeSwitch from "@/components/ViewTypeSwitch";
-import { useViewType } from "@/hooks/useViewType";
-import { LinkItem } from "@/types/index";
-import LinkCard from "./LinkCard";
-import { db, genCreatorLink, genLink } from "@/db/supabase";
-import { useEffect, useState } from "react";
-import { IconAsset, IconCheck, IconCopy } from "@tabler/icons-react";
-import delay from "delay";
-import Link from "next/link";
+import { Button } from '@/components/Button';
+import ViewTypeSwitch from '@/components/ViewTypeSwitch';
+import { genCreatorLink, genLink } from '@/db/supabase';
+import { useViewType } from '@/hooks/useViewType';
+import { LinkItem } from '@/types/index';
+import { IconAsset, IconCheck, IconCopy } from '@tabler/icons-react';
+import delay from 'delay';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import LinkCard from './LinkCard';
 
 const defaultHistory: LinkItem[] = [];
 
@@ -18,14 +18,14 @@ const genEmbedCode = (address: string) => {
 export default function LinkMaker() {
   const { viewType, toggleViewType } = useViewType();
   const [loading, setLoading] = useState(false);
-  const [url, setUrl] = useState("");
+  const [url, setUrl] = useState('');
   const [history, setHistory] = useState<LinkItem[]>(defaultHistory);
-  const [creator, setCreator] = useState("");
+  const [creator, setCreator] = useState('');
   const [isCopied, setIsCopied] = useState(false);
 
   useEffect(() => {
-    setHistory(JSON.parse(localStorage.getItem("history")!) || defaultHistory);
-    setCreator(JSON.parse(localStorage.getItem("creator")!) || "");
+    setHistory(JSON.parse(localStorage.getItem('history')!) || defaultHistory);
+    setCreator(JSON.parse(localStorage.getItem('creator')!) || '');
   }, []);
 
   function removeLink(link: LinkItem) {
@@ -33,7 +33,7 @@ export default function LinkMaker() {
 
     setHistory(newHistory);
 
-    localStorage.setItem("history", JSON.stringify(newHistory));
+    localStorage.setItem('history', JSON.stringify(newHistory));
   }
 
   const addLink = async () => {
@@ -42,13 +42,13 @@ export default function LinkMaker() {
     try {
       const link = await genLink(url as unknown as number);
       if (!link) {
-        alert("bodhi article id not found");
+        alert('bodhi article id not found');
         return;
       }
       const newHistory = [...history, link];
       setHistory(newHistory);
 
-      localStorage.setItem("history", JSON.stringify(newHistory));
+      localStorage.setItem('history', JSON.stringify(newHistory));
     } catch (error) {
       setLoading(false);
     } finally {
@@ -61,20 +61,20 @@ export default function LinkMaker() {
 
     try {
       if (!url) {
-        alert("please input...");
+        alert('please input...');
         return;
       }
       const link = await genCreatorLink(url);
       if (!link) {
-        alert("bodhi creator address not found");
+        alert('bodhi creator address not found');
         return;
       }
       const newHistory = [...link];
       setHistory(newHistory);
       setCreator(url);
 
-      localStorage.setItem("history", JSON.stringify(newHistory));
-      localStorage.setItem("creator", JSON.stringify(url));
+      localStorage.setItem('history', JSON.stringify(newHistory));
+      localStorage.setItem('creator', JSON.stringify(url));
     } catch (error) {
       setLoading(false);
     } finally {
@@ -83,11 +83,11 @@ export default function LinkMaker() {
   };
 
   const copyToClipboard = (str: string) => {
-    const el = document.createElement("textarea");
+    const el = document.createElement('textarea');
     el.value = str;
     document.body.appendChild(el);
     el.select();
-    document.execCommand("copy");
+    document.execCommand('copy');
     document.body.removeChild(el);
   };
 
@@ -111,7 +111,7 @@ export default function LinkMaker() {
       <div className="flex flex-col items-center justify-start">
         <input
           type="text"
-          className="p-2 w-full border-2 border-yellow-300 rounded-md text-lg mt-4 text-center duration-300 focus:(outline-none border-yellow-400) disabled:(opacity-50 cursor-not-allowed) input"
+          className="focus:(outline-none border-yellow-400) disabled:(opacity-50 cursor-not-allowed) input mt-4 w-full rounded-md border-2 border-yellow-300 p-2 text-center text-lg duration-300"
           placeholder="pleace input your bodhi creator address"
           value={url}
           onChange={(e) => {
@@ -119,7 +119,7 @@ export default function LinkMaker() {
             setUrl((e.target as HTMLInputElement).value);
           }}
           onKeyPress={(e) => {
-            if (e.key === "Enter") {
+            if (e.key === 'Enter') {
               makeLink();
             }
           }}
@@ -129,14 +129,14 @@ export default function LinkMaker() {
           loading={loading ? true : undefined}
           onClick={makeLink}
         >
-          <IconAsset className="w-6 h-6" />
+          <IconAsset className="h-6 w-6" />
           Make
         </Button>
       </div>
 
       <ViewTypeSwitch viewType={viewType} toggleViewType={toggleViewType} />
 
-      <div className="flex flex-row items-center justify-center my-4 text-center text-base text-gray-500">
+      <div className="my-4 flex flex-row items-center justify-center text-center text-base text-gray-500">
         <Link href={`/m/${creator}`} target="_blank">
           {creator}
         </Link>
@@ -144,15 +144,15 @@ export default function LinkMaker() {
         {creator ? (
           <button onClick={handleCopy}>
             {isCopied ? (
-              <IconCheck className="w-6 h-6"></IconCheck>
+              <IconCheck className="h-6 w-6"></IconCheck>
             ) : (
-              <IconCopy className="w-6 h-6"></IconCopy>
+              <IconCopy className="h-6 w-6"></IconCopy>
             )}
           </button>
         ) : null}
       </div>
 
-      <div className="mt-4 gap-4 grid grid-cols-1 sm:grid-cols-2">
+      <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
         {history.map((item: LinkItem, index: number) => {
           return (
             <LinkCard

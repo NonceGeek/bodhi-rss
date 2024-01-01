@@ -1,29 +1,28 @@
-import { IconBrandGithub, IconLemon } from "@tabler/icons-react";
-import Image from "next/image";
+import { IconBrandGithub } from '@tabler/icons-react';
 
 export default function Footer() {
   const menus = [
     {
-      title: "Documentation",
+      title: 'Documentation',
       children: [
-        { name: "Getting Started", href: "#" },
-        { name: "Guide", href: "#" },
-        { name: "API", href: "#" },
-        { name: "Showcase", href: "#" },
-        { name: "Pricing", href: "#" },
+        { name: 'Getting Started', href: '#' },
+        { name: 'Guide', href: '#' },
+        { name: 'API', href: '#' },
+        { name: 'Showcase', href: '#' },
+        { name: 'Pricing', href: '#' },
       ],
     },
     {
-      title: "Community",
+      title: 'Community',
       children: [
-        { name: "Forum", href: "#" },
-        { name: "Discord", href: "#" },
+        { name: 'Forum', href: '#' },
+        { name: 'Discord', href: '#' },
       ],
     },
   ];
 
   return (
-    <div className="bg-white flex flex-col md:flex-row w-full max-w-screen-lg gap-8 md:gap-16 px-8 py-8 text-sm">
+    <div className="flex w-full max-w-screen-lg flex-col gap-8 bg-white px-8 py-8 text-sm md:flex-row md:gap-16">
       <div className="flex-1">
         <a href="https://github.com/gofenix" target="_blank">
           <img width="200" height="32" src="logo.png" alt="Made by Fenix" />
@@ -48,7 +47,7 @@ export default function Footer() {
         </div>
       ))}
 
-      <div className="text-gray-500 space-y-2">
+      <div className="space-y-2 text-gray-500">
         <div className="text-xs">
           Copyright © 2023 gofenix
           <br />

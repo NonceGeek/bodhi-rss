@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from 'react';
 
 interface MenuItem {
   label: string;
@@ -19,7 +19,7 @@ export default function Dropdown({
   icon,
   items,
   onSelect,
-  className = "",
+  className = '',
   style = {},
 }: DropdownButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,9 +39,9 @@ export default function Dropdown({
   }
 
   useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
@@ -54,12 +54,12 @@ export default function Dropdown({
     >
       {icon}
       {isOpen && (
-        <div className="origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
-          <ul className="py-1 w-full flex flex-col">
+        <div className="absolute right-0 mt-2 w-32 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+          <ul className="flex w-full flex-col py-1">
             {items.map((item) => (
               <div
                 key={item.label}
-                className="w-full inline-flex items-center gap-2 text-center px-2 py-2 text-sm text-gray-700 hover:(bg-gray-100 text-gray-900 cursor-pointer)"
+                className="hover:(bg-gray-100 cursor-pointer) inline-flex w-full items-center gap-2 px-2 py-2 text-center text-sm text-gray-700 text-gray-900"
                 onClick={() => handleItemClick(item)}
               >
                 {item.icon && item.icon}

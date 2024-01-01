@@ -10,11 +10,11 @@ export function Button(props: Props) {
       {...props}
       disabled={props.loading}
       type="button"
-      className={`flex gap-2 items-center bg-yellow-300 text-white py-2 px-4 rounded-md duration-300 shadow-md text-lg mt-4 hover:(shadow-lg) focus:(shadow-lg outline-none) disabled:(opacity-50 cursor-not-allowed) ${
-        props.className ?? ""
+      className={`hover:(shadow-lg) focus:(shadow-lg outline-none) disabled:(opacity-50 cursor-not-allowed) mt-4 flex items-center gap-2 rounded-md bg-yellow-300 px-4 py-2 text-lg text-white shadow-md duration-300 ${
+        props.className ?? ''
       }`}
     >
-      {props.loading ? "Loading..." : props.children}
+      {props.loading ? 'Loading...' : props.children}
     </button>
   );
 }

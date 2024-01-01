@@ -1,8 +1,8 @@
-import LinkCard from "@/components/LinkCard";
-import { genLink } from "@/db/supabase";
-import { LinkItem } from "@/types";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import LinkCard from '@/components/LinkCard';
+import { genLink } from '@/db/supabase';
+import { LinkItem } from '@/types';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 
 export default function Single() {
   const [linkInfo, setLinkInfo] = useState({} as LinkItem);
@@ -20,9 +20,9 @@ export default function Single() {
   return (
     <>
       <meta name="referrer" content="no-referrer"></meta>
-      <section className="w-full h-full flex flex-row justify-start items-start">
-        <main className="w-full max-w-lg mx-auto my-auto ">
-          <div className={`flex justify-center items-center w-50`}>
+      <section className="flex h-full w-full flex-row items-start justify-start">
+        <main className="mx-auto my-auto w-full max-w-lg ">
+          <div className={`w-50 flex items-center justify-center`}>
             <LinkCard link={linkInfo} key={linkInfo.url} />
           </div>
         </main>

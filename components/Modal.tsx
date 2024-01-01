@@ -11,11 +11,11 @@ function Modal({
   children,
   show,
   onClose,
-  closeText = "Close",
+  closeText = 'Close',
 }: ModalProps) {
   function handleBackgroundClick(event: any) {
     const target = event.target as HTMLElement;
-    if (target.classList.contains("modal-background")) {
+    if (target.classList.contains('modal-background')) {
       onClose();
     }
   }
@@ -26,28 +26,28 @@ function Modal({
 
   return (
     <div
-      className="fixed z-10 inset-0 overflow-y-auto"
+      className="fixed inset-0 z-10 overflow-y-auto"
       onClick={handleBackgroundClick}
     >
-      <div className="flex items-center justify-center min-h-screen px-4 pt-6 pb-24 text-center sm:block sm:p-0">
+      <div className="flex min-h-screen items-center justify-center px-4 pb-24 pt-6 text-center sm:block sm:p-0">
         <div className="fixed inset-0 transition-opacity">
           <div className="modal-background absolute inset-0 bg-gray-500 opacity-75"></div>
         </div>
-        <span className="hidden sm:(inline-block align-middle h-screen)"></span>
-        <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:(my-8 align-middle max-w-lg w-full)">
-          <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-            <div className="mt-3 text-center sm:(mt-0 ml-4 text-left)">
-              <h3 className="text-lg leading-6 font-medium text-gray-900">
+        <span className="sm:(inline-block h-screen) hidden align-middle"></span>
+        <div className="sm:(my-8 w-full) inline-block max-w-lg transform overflow-hidden rounded-lg bg-white text-left align-middle align-bottom shadow-xl transition-all">
+          <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+            <div className="sm:(mt-0 text-left) ml-4 mt-3 text-center">
+              <h3 className="text-lg font-medium leading-6 text-gray-900">
                 {title}
               </h3>
               <div className="mt-2">{children}</div>
             </div>
           </div>
-          <div className="bg-gray-50 px-4 py-3 sm:(px-6 flex flex-row-reverse)">
+          <div className="sm:(px-6 flex-row-reverse) flex bg-gray-50 px-4 py-3">
             <button
               onClick={onClose}
               type="button"
-              className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:(outline-none ring-2 ring-offset-2 ring-blue-500) sm:(ml-3 w-auto text-sm)"
+              className="focus:(outline-none ring-blue-500) sm:(ml-3 text-sm) inline-flex w-auto w-full justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm ring-2 ring-offset-2 hover:bg-blue-700"
             >
               {closeText}
             </button>

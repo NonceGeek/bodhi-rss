@@ -1,11 +1,15 @@
-import { ViewType } from "@/hooks/useViewType";
-import { LinkItem } from "@/types/index";
+import { ViewType } from '@/hooks/useViewType';
+import { LinkItem } from '@/types/index';
 
-import Dropdown from "@/components/Dropdown";
-import Modal from "@/components/Modal";
-import { useState } from "react";
-import { IconAppWindow, IconDots, IconLink, IconTrashX } from "@tabler/icons-react";
-import Image from "next/image";
+import Dropdown from '@/components/Dropdown';
+import Modal from '@/components/Modal';
+import {
+  IconAppWindow,
+  IconDots,
+  IconLink,
+  IconTrashX,
+} from '@tabler/icons-react';
+import { useState } from 'react';
 
 interface Props {
   type?: ViewType;
@@ -27,14 +31,14 @@ function genEmbedCode(link: LinkItem) {
 }
 
 export default function LinkCard({
-  type = "image-up",
+  type = 'image-up',
   showMenu = false,
   link,
   removeLink,
 }: Props) {
   const { url, title, description, image } = link;
   const [showModal, setShowModal] = useState(false);
-  const [embedCode, setEmbedCode] = useState("");
+  const [embedCode, setEmbedCode] = useState('');
 
   const [items, setItems] = useState<MenuItem[]>([
     // {
@@ -43,13 +47,13 @@ export default function LinkCard({
     //   icon: <DownloadIcon size={20} color="gray"></DownloadIcon>,
     // },
     {
-      label: "embed",
-      value: "embed",
+      label: 'embed',
+      value: 'embed',
       icon: <IconAppWindow size={20} color="skyblue" />,
     },
     {
-      label: "remove",
-      value: "remove",
+      label: 'remove',
+      value: 'remove',
       icon: <IconTrashX size={20} color="red" />,
     },
   ]);
@@ -61,11 +65,11 @@ export default function LinkCard({
   };
 
   const copyToClipboard = (str: string) => {
-    const el = document.createElement("textarea");
+    const el = document.createElement('textarea');
     el.value = str;
     document.body.appendChild(el);
     el.select();
-    document.execCommand("copy");
+    document.execCommand('copy');
     document.body.removeChild(el);
   };
 
@@ -75,23 +79,23 @@ export default function LinkCard({
 
   return (
     <div
-      className={`w-full relative flex bg-white rounded-lg shadow-md p-6 group ${
-        type === "image-up" ? "flex-col" : "flex-row"
+      className={`group relative flex w-full rounded-lg bg-white p-6 shadow-md ${
+        type === 'image-up' ? 'flex-col' : 'flex-row'
       }`}
       data-url={url}
     >
       {showMenu && (
         <>
           <Dropdown
-            className="absolute top-2 right-2 text-sm text-gray-500 transition-opacity opacity-0 group-hover:opacity-100 cursor-pointer"
+            className="absolute right-2 top-2 cursor-pointer text-sm text-gray-500 opacity-0 transition-opacity group-hover:opacity-100"
             icon={<IconDots />}
             items={items}
             onSelect={(item: MenuItem) => {
               switch (item.value) {
-                case "embed":
+                case 'embed':
                   handleEmbed();
                   break;
-                case "remove":
+                case 'remove':
                   handleRemove();
                   break;
                 default:
@@ -109,28 +113,29 @@ export default function LinkCard({
             }}
           >
             <textarea
-              className="w-full border-2 border-gray-300 p-2 rounded-lg"
+              className="w-full rounded-lg border-2 border-gray-300 p-2"
               name="embed"
               readOnly
               value={embedCode}
-              style={{ height: "120px" }}
+              style={{ height: '120px' }}
             ></textarea>
           </Modal>
         </>
       )}
 
-      {type === "image-up" && (
+      {type === 'image-up' && (
         <>
           <img
-            className="h-32 object-cover self-center z-100"
+            className="z-100 h-32 self-center object-cover"
             src={image!}
-            width={"auto"}
+            width={'100%'}
+            height={'100%'}
             alt=""
           />
           <div className="flex flex-col">
-            <h2 className="text-xl font-bold mt-4">{title}</h2>
-            <div className="text-gray-600 my-2 flex-1">{description}</div>
-            <span className="inline-flex items-center text-gray-300 font-xs ">
+            <h2 className="mt-4 text-xl font-bold">{title}</h2>
+            <div className="my-2 flex-1 text-gray-600">{description}</div>
+            <span className="font-xs inline-flex items-center text-gray-300 ">
               <IconLink size={16} />
               <a href={url} target="_blank">
                 {url}
@@ -140,15 +145,21 @@ export default function LinkCard({
         </>
       )}
 
-      {type === "image-left" && (
+      {type === 'image-left' && (
         <>
-          <div className="flex-none w-1/3">
-            <img className="object-cover" src={image!} alt="" />
+          <div className="w-1/3 flex-none">
+            <img
+              className="object-cover"
+              src={image!}
+              width={'100%'}
+              height={'100%'}
+              alt=""
+            />
           </div>
-          <div className="flex-grow ml-4">
+          <div className="ml-4 flex-grow">
             <h2 className="text-xl font-bold">{title}</h2>
-            <div className="text-gray-600 my-2 flex-1">{description}</div>
-            <span className="inline-flex items-center text-gray-300 font-xs">
+            <div className="my-2 flex-1 text-gray-600">{description}</div>
+            <span className="font-xs inline-flex items-center text-gray-300">
               <IconLink size={16} />
               <a href={url} target="_blank">
                 {url}
