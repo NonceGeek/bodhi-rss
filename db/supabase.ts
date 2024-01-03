@@ -1,9 +1,10 @@
 import { LinkItem } from '@/types/index';
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = 'https://ttsogebedhkttgyrgjtc.supabase.co';
-const supabaseKey =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR0c29nZWJlZGhrdHRneXJnanRjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDI4Njg0NzIsImV4cCI6MjAxODQ0NDQ3Mn0.vmSns6cwl5qdq7I3Zgg4hpr1h4_m3OnBq06OENsP7VI';
+const supabaseUrl: string = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
+const supabaseKey: string = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
+
+console.log(supabaseUrl, supabaseKey)
 
 export const db = createClient(supabaseUrl, supabaseKey);
 
@@ -35,6 +36,8 @@ export async function genLink(id: number): Promise<LinkItem | null> {
 export async function genCreatorLink(
   address: string
 ): Promise<LinkItem[] | null> {
+
+
   const { data, error } = await db
     .from('bodhi_text_assets')
     .select('*')
