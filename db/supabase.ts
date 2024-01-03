@@ -4,7 +4,7 @@ import { createClient } from '@supabase/supabase-js';
 const supabaseUrl: string = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
 const supabaseKey: string = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
 
-console.log(supabaseUrl, supabaseKey)
+console.log(supabaseUrl, supabaseKey);
 
 export const db = createClient(supabaseUrl, supabaseKey);
 
@@ -36,8 +36,6 @@ export async function genLink(id: number): Promise<LinkItem | null> {
 export async function genCreatorLink(
   address: string
 ): Promise<LinkItem[] | null> {
-
-
   const { data, error } = await db
     .from('bodhi_text_assets')
     .select('*')
