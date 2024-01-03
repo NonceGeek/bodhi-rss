@@ -39,7 +39,7 @@ export async function genCreatorLink(
   const { data, error } = await db
     .from('bodhi_text_assets')
     .select('*')
-    .eq('creator', address);
+    .eq('creator', address.toLowerCase());
 
   if (error) {
     console.error(error);
