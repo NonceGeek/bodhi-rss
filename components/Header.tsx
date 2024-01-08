@@ -13,7 +13,11 @@ export default function Header() {
       </div>
 
       <div className="flex items-center">
-        <a href="https://bodhi.wtf/13714" target="_blank">
+        <a
+          href="https://bodhi.wtf/13714"
+          target="_blank"
+          className="rounded border hover:bg-cyan-200"
+        >
           <img width="180" height="18" src="donation.png" alt="Made by Fenix" />
         </a>
         {/* <a href="https://bodhi.wtf/13714" target="_blank">
