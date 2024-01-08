@@ -1,4 +1,8 @@
-import { IconBrandGithub, IconLink } from '@tabler/icons-react';
+import {
+  IconBrandGithub,
+  IconBrandTwitter,
+  IconLink,
+} from '@tabler/icons-react';
 
 export default function Header() {
   return (
@@ -8,13 +12,21 @@ export default function Header() {
         <div className="ml-1 text-xl font-bold">Bodhi Link Maker</div>
       </div>
 
-      <a
-        href={'https://github.com/gofenix/deno-news'}
-        target="_blank"
-        className=""
-      >
-        <IconBrandGithub />
-      </a>
+      <div className="flex items-center">
+        <a href="https://bodhi.wtf/13714" target="_blank">
+          <img width="180" height="18" src="logo.png" alt="Made by Fenix" />
+        </a>
+        <a
+          href={'https://github.com/gofenix/deno-news'}
+          target="_blank"
+          className="p-1"
+        >
+          <IconBrandGithub />
+        </a>
+        <a href={'https://twitter.com/testzfz'} target="_blank" className="p-1">
+          <IconBrandTwitter />
+        </a>
+      </div>
     </div>
   );
 }
