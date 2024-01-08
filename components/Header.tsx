@@ -14,10 +14,13 @@ export default function Header() {
 
       <div className="flex items-center">
         <a href="https://bodhi.wtf/13714" target="_blank">
-          <img width="180" height="18" src="logo.png" alt="Made by Fenix" />
+          <img width="180" height="18" src="donation.png" alt="Made by Fenix" />
         </a>
+        {/* <a href="https://bodhi.wtf/13714" target="_blank">
+          <img width="180" height="18" src="logo.png" alt="Made by Fenix" />
+        </a> */}
         <a
-          href={'https://github.com/gofenix/deno-news'}
+          href={'https://github.com/gofenix/bodhi-link'}
           target="_blank"
           className="p-1"
         >
