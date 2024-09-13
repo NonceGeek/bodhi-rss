@@ -142,6 +142,7 @@ export default function LinkMaker() {
   return (
     <>
     <center>
+      {/* TODO: Q - why I could now change the color of this btn? */}
         <Button
             className="btn bg-blue-300 hover:bg-blue-400 text-white"
             onClick={() => window.open('https://bodhi.wtf', '_blank')}
@@ -199,7 +200,7 @@ export default function LinkMaker() {
           </>
         )}
         <Button
-          className="btn mt-4"
+          className="btn mt-4 "
           onClick={generateRssFeed}
         >
           Generate RSS Feed
