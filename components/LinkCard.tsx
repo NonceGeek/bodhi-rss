@@ -27,7 +27,7 @@ interface MenuItem {
 function genEmbedCode(link: LinkItem) {
   const id = link.title;
 
-  return `<iframe style="width:100%;height:100%;min-width:256px;" src="https://bodhi-link.vercel.app/s/${id}" frameBorder="0"></iframe>`;
+  return `<iframe style="width:100%;height:100%;min-width:256px;" src="https://rss.rootmud.xyz/s/${id}" frameBorder="0"></iframe>`;
 }
 
 export default function LinkCard({

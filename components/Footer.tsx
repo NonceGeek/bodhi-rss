@@ -27,6 +27,9 @@ export default function Footer() {
         <a href="https://github.com/gofenix" target="_blank">
           <img width="200" height="32" src="logo.png" alt="Made by Fenix" />
         </a>
+        <a href="https://github.com/leeduckgo" target="_blank">
+          <img width="200" height="32" src="logo_ldg.png" alt="Made by LeeDuckGo" />
+        </a>
       </div>
 
       {menus.map((item) => (
@@ -55,7 +58,7 @@ export default function Footer() {
         </div>
 
         <a
-          href="https://github.com/gofenix"
+          href="https://github.com/NonceGeek/bodhi-rss"
           className="inline-block hover:text-black"
           aria-label="GitHub"
         >

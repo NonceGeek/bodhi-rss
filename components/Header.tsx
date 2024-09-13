@@ -9,12 +9,12 @@ export default function Header() {
     <div className="flex w-full max-w-screen-lg flex-col items-center gap-4 bg-white py-6 md:flex-row">
       <div className="flex flex-1 items-center">
         <IconLink color="#ffdb1e" />
-        <div className="ml-1 text-xl font-bold">Bodhi Link Maker</div>
+        <div className="ml-1 text-xl font-bold">Bodhi RSS</div>
       </div>
 
       <div className="flex items-center">
         <a
-          href="https://bodhi.wtf/13714"
+          href="https://bodhi.wtf/space/5/15370?action=buy"
           target="_blank"
           className="rounded border hover:bg-cyan-200"
         >
@@ -24,13 +24,13 @@ export default function Header() {
           <img width="180" height="18" src="logo.png" alt="Made by Fenix" />
         </a> */}
         <a
-          href={'https://github.com/gofenix/bodhi-link'}
+          href={'https://github.com/NonceGeek/bodhi-rss'}
           target="_blank"
           className="p-1"
         >
           <IconBrandGithub />
         </a>
-        <a href={'https://twitter.com/testzfz'} target="_blank" className="p-1">
+        <a href={'https://twitter.com/0xleeduckgo'} target="_blank" className="p-1">
           <IconBrandTwitter />
         </a>
       </div>
