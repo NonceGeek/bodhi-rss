@@ -52,7 +52,7 @@ export default function Footer() {
 
       <div className="space-y-2 text-gray-500">
         <div className="text-xs">
-          Copyright © 2023 gofenix
+          Copyright © 2024 gofenix&leeduckgo
           <br />
           All right reserved.
         </div>

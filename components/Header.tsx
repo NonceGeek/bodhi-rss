@@ -3,6 +3,7 @@ import {
   IconBrandTwitter,
   IconLink,
 } from '@tabler/icons-react';
+import Link from 'next/link';
 
 export default function Header() {
   return (
@@ -11,7 +12,13 @@ export default function Header() {
         <IconLink color="#ffdb1e" />
         <div className="ml-1 text-xl font-bold">Bodhi RSS</div>
       </div>
-
+      <div className="w-full">
+        <nav className="flex justify-center space-x-4">
+          <Link href="/" className="hover:text-cyan-600">RSS Generator</Link>
+          <Link href="https://github.com/NonceGeek/bodhi-rss/discussions/categories/awesome-rss" className="hover:text-cyan-600">Awesome RSS Feeds</Link>
+          <Link href="/link-maker" className="hover:text-cyan-600">Link Maker</Link>
+        </nav>
+      </div>
       <div className="flex items-center">
         <a
           href="https://bodhi.wtf/space/5/15370?action=buy"
